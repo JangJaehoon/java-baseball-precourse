@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.exception.LengthException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -25,7 +27,7 @@ public class BaseBallNumbers {
 
     private void validateUserNumbers(String userNumbers) {
         if (userNumbers.length() != BASEBALL_NUMBERS_LENGTH) {
-            throw new InvalidIntegerLengthException();
+            throw new LengthException();
         }
     }
 
