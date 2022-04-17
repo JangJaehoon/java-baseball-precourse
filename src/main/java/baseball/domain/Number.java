@@ -10,10 +10,12 @@ public class Number {
     private final int Numbers;
 
     public Number(Character number) {
+
         this(Character.getNumericValue(number));
     }
 
     public Number(String number) {
+
         this(Integer.parseInt(number));
     }
 
@@ -28,9 +30,7 @@ public class Number {
         }
     }
 
-    public int getBaseballNumber() {
-        return Numbers;
-    }
+
 
     @Override
     public boolean equals(Object o) {

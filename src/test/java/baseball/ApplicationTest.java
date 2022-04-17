@@ -14,7 +14,7 @@ class ApplicationTest extends NsTest {
         assertRandomNumberInRangeTest(
                 () -> {
                     run("246", "135", "1", "597", "589", "2");
-                    assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
+                    assertThat(output()).contains("nothing", "3strike", "1ball 1strike", "3strike", "Game Over");
                 },
                 1, 3, 5, 5, 8, 9
         );
@@ -29,7 +29,5 @@ class ApplicationTest extends NsTest {
     }
 
     @Override
-    public void runMain() {
-        Application.main(new String[]{});
-    }
+    public void runMain() {Application.main(new String[]{});}
 }
