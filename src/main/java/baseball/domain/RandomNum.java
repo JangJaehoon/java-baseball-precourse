@@ -8,29 +8,31 @@ import java.util.Collections;
 import java.util.List;
 
 public class RandomNum {
-    private static final int START_INCLUSIVE = 1;
-    private static final int END_INCLUSIVE = 9;
+    private static final int START = 1;
+    private static final int END = 9;
     private static final int COUNT = 3;
 
-    private static List<BaseBallNumber> randomNumbers;
+    private static List<Number> randomNums;
 
     public RandomNum() {
-        this.randomNumbers = extractRandomNumbers();
+        this.randomNums = extractRandomNums();
     }
 
-    private List<BaseBallNumber> extractRandomNumbers() {
-        List<BaseBallNumber> randomNumbers = new ArrayList<>();
+    private List<Number> extractRandomNums() {
+        List<Number> randomNums = new ArrayList<>();
 
-        while (randomNumbers.size() != COUNT) {
-            BaseBallNumber randomNumber = new BaseBallNumber(Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE));
-            if (!randomNumbers.contains(randomNumber)) {
-                randomNumbers.add(randomNumber);
+        while (randomNums.size() != COUNT) {
+            Number randomNum =
+                    new Number(Randoms.pickNumberInRange(START, END));
+            if (!randomNums.contains(randomNum)) {
+                randomNums.add(randomNum);
             }
         }
-        return randomNumbers;
+        return randomNums;
     }
 
-    public List<BaseBallNumber> randomNumbers() {
-        return Collections.unmodifiableList(randomNumbers);
+    public List<Number> randomNumbers() {
+
+        return Collections.unmodifiableList(randomNums);
     }
 }

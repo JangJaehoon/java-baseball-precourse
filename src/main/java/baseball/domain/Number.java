@@ -4,32 +4,32 @@ package baseball.domain;
 import baseball.exception.RangeException;
 import java.util.Objects;
 
-public class BaseBallNumber {
+public class Number {
     private static final Integer MINIMUM = 1;
     private static final Integer MAXIMUM = 9;
-    private final int baseballNumber;
+    private final int Numbers;
 
-    public BaseBallNumber(Character number) {
+    public Number(Character number) {
         this(Character.getNumericValue(number));
     }
 
-    public BaseBallNumber(String number) {
+    public Number(String number) {
         this(Integer.parseInt(number));
     }
 
-    public BaseBallNumber(Integer number) {
-        validateNumber(number);
-        this.baseballNumber = number;
+    public Number(Integer number) {
+        validateNum(number);
+        this.Numbers = number;
     }
 
-    private void validateNumber(Integer number) {
+    private void validateNum(Integer number) {
         if (MINIMUM > number || MAXIMUM < number) {
             throw new RangeException();
         }
     }
 
     public int getBaseballNumber() {
-        return baseballNumber;
+        return Numbers;
     }
 
     @Override
@@ -40,12 +40,12 @@ public class BaseBallNumber {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        BaseBallNumber that = (BaseBallNumber) o;
-        return baseballNumber == that.baseballNumber;
+        Number that = (Number) o;
+        return Numbers == that.Numbers;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(baseballNumber);
+        return Objects.hash(Numbers);
     }
 }

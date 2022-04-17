@@ -1,49 +1,49 @@
 package baseball.controller;
 
-import baseball.domain.BaseBallNumbers;
+import baseball.domain.GameNums;
 import baseball.domain.RandomNum;
-import baseball.exception.MessageFormatException;
+import baseball.exception.InfoFormatException;
 import baseball.view.InputView;
 import baseball.view.ResultView;
 
 public class Controller {
 
     private static final String CONTINUE = "1";
-    private static final String GAME_END = "2";
+    private static final String END = "2";
     private static final Integer THREE_STRIKE = 3;
 
     public static void run() {
-        runBaseBallGame();
+        runGame();
         checkContinue();
     }
 
-    private static void runBaseBallGame() {
+    private static void runGame() {
         int strCnt = 0;
         int ballCnt = 0;
 
-        RandomNum randomNumbers = new RandomNum();
+        RandomNum randomNums = new RandomNum();
         while (strCnt != THREE_STRIKE) {
-            BaseBallNumbers baseBallNumbers = new BaseBallNumbers(InputView.inputNum());
-            ballCnt = baseBallNumbers.calculateBallCount(randomNumbers.randomNumbers());
-            strCnt = baseBallNumbers.calculateStrikeCount(randomNumbers.randomNumbers());
+            GameNums gameNums = new GameNums(InputView.inputNum());
+            ballCnt = gameNums.BallCount(randomNums.randomNumbers());
+            strCnt = gameNums.StrikeCount(randomNums.randomNumbers());
             ResultView.printResult(ballCnt, strCnt);
         }
-        ResultView.printResultInfoMessage();
+        ResultView.printResult();
     }
 
     private static void checkContinue() {
-        String continueMessage = InputView.askContinue();
+        String continueInfo = InputView.askContinue();
 
-        if (continueMessage.equals(CONTINUE)) {
-            runBaseBallGame();
+        if (continueInfo.equals(CONTINUE)) {
+            runGame();
             return;
         }
 
-        if (continueMessage.equals(GAME_END)) {
-            ResultView.printGameEnd();
+        if (continueInfo.equals(END)) {
+            ResultView.printEnd();
             return;
         }
 
-        throw new MessageFormatException();
+        throw new InfoFormatException();
     }
 }
